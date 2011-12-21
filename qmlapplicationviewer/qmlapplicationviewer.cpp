@@ -198,3 +198,7 @@ QApplication *createApplication(int &argc, char **argv)
     return new QApplication(argc, argv);
 #endif
 }
+
+QDeclarativeView* QmlApplicationViewer::getView() {
+    return d->view;
+}

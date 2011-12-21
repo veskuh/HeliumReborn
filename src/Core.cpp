@@ -19,11 +19,9 @@
 
 
 #define ENGINE_BASEURL                    "/home/meego/qml/"
-#define BROWSERVIEW_QML                   "MeegoPageStack.qml"
+#define BROWSERVIEW_QML                   "MainPage.qml"
 #define BROWSERVIEW_QML_WEBVIEW_OBJ_NAME  "webView"
 #define LOGBOOKVIEW_QML                   "LogbookView.qml"
-#define DEFAULT_WIDTH                     800
-#define DEFAULT_HEIGHT                    480
 
 // public:
 Core::Core(QDeclarativeView *mainView, QObject *parent) :
@@ -41,17 +39,6 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
    // Let's start tracking orientation
 
    QDeclarativeContext *context = mainView->rootContext();
-
-#if defined(Q_OS_MAC) || defined(Q_OS_WIN32)
-   //desktop build, defaults
-   context->setContextProperty("screenWidth", DEFAULT_WIDTH);
-   context->setContextProperty("screenHeight", DEFAULT_HEIGHT);
-#else
-   //TODO recognise whether Q_OS_LINUX is defined and understand whether is meego or desktop linux
-   //mobile builds, we want the whole screen!
-   context->setContextProperty("screenWidth", qApp->desktop()->width());
-   context->setContextProperty("screenHeight", qApp->desktop()->height());
-#endif
 
    context->setContextProperty("mainWindow", mainView);
 
@@ -99,7 +86,7 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
    m_mainView->engine()->rootContext()->setContextProperty(Core::declarativeName(), this);
 
    // Setting the BaseURL in the Engine: this will be used as "base" from Components while importing other Components
-   m_mainView->engine()->setBaseUrl(QUrl(ENGINE_BASEURL));
+   //m_mainView->engine()->setBaseUrl(QUrl(ENGINE_BASEURL));
 
    // Register an Image Provider for Favicons
    m_mainView->engine()->addImageProvider("favicons", new FaviconImageProvider);
@@ -139,7 +126,7 @@ QString Core::fixUrl(const QString &urlString) {
    if ( urlString.indexOf(':') < 0 ) {
       if ( urlString.indexOf('.') < 0 || urlString.indexOf(' ') >= 0 ) {
          // Fall back to a search engine; hard-coded Google
-         return QString("http://www.google.fr/search?q=").append(urlString);
+         return QString("http://www.google.com/search?q=").append(urlString);
       } else {
          return QString("http://").append(urlString);
       }

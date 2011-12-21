@@ -72,8 +72,8 @@ Flickable {
       transformOrigin: Item.TopLeft
 
       // Set the URL for this WebView
-//      function setUrl(urlString) { this.url = appcore.fixUrl(urlString); }
-function setUrl(urlString) { this.url = urlString; }
+      function setUrl(urlString) { this.url = appcore.fixUrl(urlString); }
+//function setUrl(urlString) { this.url = urlString; }
       // Execute the Zooming
       function doZoom(zoom,centerX,centerY)
       {
@@ -90,16 +90,16 @@ function setUrl(urlString) { this.url = urlString; }
          }
       }
 
-      url:"http://www.connecting.nokia.com/"
-     /* url: {
-          //appcore.fixUrl(appcore.currentUrl);
+      //url:"http://www.connecting.nokia.com/"
+      url: {
+          appcore.fixUrl(appcore.currentUrl);
 
-      }*/
-   /*   Connections {
+      }
+      Connections {
          target: appcore
          onCurrentUrlChanged: { webView.url = appcore.fixUrl(appcore.currentUrl); }
          onShowingBrowserView: { webView.focus = true; }
-      }*/
+      }
 
       smooth: false // We don't want smooth scaling, since we only scale during (fast) transitions
       focus: true
@@ -136,7 +136,7 @@ function setUrl(urlString) { this.url = urlString; }
          }
       }
       onIconChanged: { flickable.iconChanged(); }
-      //onLoadFinished: { if ( appcore ) { appcore.historyCurrentUrl(); } }
+      onLoadFinished: { if ( appcore ) { appcore.historyCurrentUrl(); } }
       onLoadFailed: { webView.stop.trigger(); }
       onZoomTo: { doZoom(zoom,centerX,centerY); }
       // [/Signal Handling]
