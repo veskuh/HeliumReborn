@@ -81,10 +81,12 @@ HEADERS += \
     src/models/MostVisitedListModel.h \
     src/utility/SqliteDbHelper.h \
     src/utility/macros.h \
-    src/utility/Declarativable.h
+    src/utility/Declarativable.h \
+    src/buildconfig.h
 
 INCLUDEPATH+=src \
              src/utility
+
 
 
 
