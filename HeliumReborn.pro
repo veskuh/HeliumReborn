@@ -1,3 +1,17 @@
+TARGET = HeliumReborn
+
+TEMPLATE = app
+
+QT += declarative \
+    gui \
+    core \
+    network \
+    webkit \
+    opengl \
+    sql
+
+
+
 # Add more folders to ship with the application, here
 folder_01.source = qml/HeliumReborn
 folder_01.target = qml
@@ -30,7 +44,19 @@ CONFIG += qdeclarative-boostable
 # CONFIG += qt-components
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    src/Core.cpp \
+    src/MainView.cpp \
+    src/Logbook.cpp \
+    src/FaviconImageProvider.cpp \
+    src/CoreDbHelper.cpp \
+    src/models/LinkItemsSharedCaches.cpp \
+    src/models/HistoryListModel.cpp \
+    src/models/BookmarksListModel.cpp \
+    src/WebViewInterface.cpp \
+    src/Settings.cpp \
+    src/models/MostVisitedListModel.cpp \
+    src/utility/SqliteDbHelper.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -38,5 +64,35 @@ qtcAddDeployment()
 
 RESOURCES += \
     res.qrc
+
+HEADERS += \
+    src/Core.h \
+    src/MainView.h \
+    src/LogbookLinkItems.h \
+    src/Logbook.h \
+    src/LinkItem.h \
+    src/FaviconImageProvider.h \
+    src/CoreDbHelper.h \
+    src/models/LinkItemsSharedCaches.h \
+    src/models/HistoryListModel.h \
+    src/models/BookmarksListModel.h \
+    src/WebViewInterface.h \
+    src/Settings.h \
+    src/models/MostVisitedListModel.h \
+    src/utility/SqliteDbHelper.h \
+    src/utility/macros.h \
+    src/utility/Declarativable.h
+
+INCLUDEPATH+=src \
+             src/utility
+
+
+
+
+
+
+
+
+
 
 
