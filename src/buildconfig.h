@@ -28,7 +28,7 @@
 #define BUILDCONFIG_H
 
 /** ------------------------------------- Proxy default Config */
-#define USE_NETWORK_PROXY //< Comment this to disable the usage of this Proxy
+//#define USE_NETWORK_PROXY //< Comment this to disable the usage of this Proxy
 #define NETWORK_PROXY_HOSTNAME  "172.16.42.133"
 #define NETWORK_PROXY_PORT      8080
 
