@@ -60,6 +60,9 @@ class QmlApplicationViewerPrivate
 
 QString QmlApplicationViewerPrivate::adjustPath(const QString &path)
 {
+    if( path.startsWith("qrc:/") )
+        return path;
+
 #ifdef Q_OS_UNIX
 #ifdef Q_OS_MAC
     if (!QDir::isAbsolutePath(path))
@@ -127,6 +130,10 @@ QmlApplicationViewer *QmlApplicationViewer::create()
 
 void QmlApplicationViewer::setMainQmlFile(const QString &file)
 {
+    if(file.startsWith("qrc:/")) {
+        d->view->setSource(QUrl(file));
+        return;
+    }
     d->mainQmlFile = d->adjustPath(file);
     d->view->setSource(QUrl::fromLocalFile(d->mainQmlFile));
 }

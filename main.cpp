@@ -9,7 +9,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     Core *core = new Core(viewer->getView());
-    viewer->setMainQmlFile(QLatin1String("qml/HeliumReborn/main.qml"));
+    viewer->setMainQmlFile("qrc:/qmls/qml/HeliumReborn/main.qml");
 
     viewer->showExpanded();
     core->start();

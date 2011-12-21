@@ -18,7 +18,7 @@
 #include "FaviconImageProvider.h"
 
 
-#define ENGINE_BASEURL                    "/home/meego/qml/"
+#define ENGINE_BASEURL                    "qrc:/qmls/qml/HeliumReborn/"
 #define BROWSERVIEW_QML                   "MainPage.qml"
 #define BROWSERVIEW_QML_WEBVIEW_OBJ_NAME  "webView"
 #define LOGBOOKVIEW_QML                   "/Users/vesahart/Projects/HeliumReborn/qml/HeliumReborn/LogbookView.qml"
@@ -86,7 +86,7 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
    m_mainView->engine()->rootContext()->setContextProperty(Core::declarativeName(), this);
 
    // Setting the BaseURL in the Engine: this will be used as "base" from Components while importing other Components
-   //m_mainView->engine()->setBaseUrl(QUrl(ENGINE_BASEURL));
+   m_mainView->engine()->setBaseUrl(QUrl(ENGINE_BASEURL));
 
    // Register an Image Provider for Favicons
    m_mainView->engine()->addImageProvider("favicons", new FaviconImageProvider);

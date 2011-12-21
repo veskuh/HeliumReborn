@@ -21,7 +21,7 @@
 */
 
 
-import Qt 4.7
+import QtQuick 1.1
 import com.nokia.meego 1.0
 
 Item {
@@ -64,6 +64,7 @@ Item {
       fieldText.text = textEdit.text;
       mouseGrabbed = false;
       fieldText.editFinished();
+      textEdit.closeSoftwareInputPanel();
    }
 
    // Set the "fieldText" to "<empty>" state, and emit the "editAborted" signal

@@ -38,5 +38,29 @@
         <file>pics/tooltip-bg-100x100.png</file>
         <file>pics/tooltip-bg-trans-100x100.png</file>
         <file>pics/url-list-bg-10x60.png</file>
+        <file>qml/HeliumReborn/FieldText.qml</file>
+        <file>qml/HeliumReborn/FlickableWebView.qml</file>
+        <file>qml/HeliumReborn/Header.qml</file>
+        <file>qml/HeliumReborn/LogbookView.qml</file>
+        <file>qml/HeliumReborn/main.qml</file>
+        <file>qml/HeliumReborn/MainPage.qml</file>
+        <file>qml/HeliumReborn/common/Background.qml</file>
+        <file>qml/HeliumReborn/common/BarIcon.qml</file>
+        <file>qml/HeliumReborn/common/BottomDropShadow.qml</file>
+        <file>qml/HeliumReborn/common/EmbossedButton.qml</file>
+        <file>qml/HeliumReborn/common/HScrollDropShadow.qml</file>
+        <file>qml/HeliumReborn/common/ScrollBar.qml</file>
+        <file>qml/HeliumReborn/common/TemporaryMessageWithIcon.qml</file>
+        <file>qml/HeliumReborn/common/ToolTip.qml</file>
+        <file>qml/HeliumReborn/common/TopDropShadow.qml</file>
+        <file>qml/HeliumReborn/common/VHScrollDropShadow.qml</file>
+        <file>qml/HeliumReborn/common/VScrollDropShadow.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/BookmarksListView.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/Header.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/HistoryListView.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/LogbookListView.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/MostVisitedListView.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/TabBar.qml</file>
+        <file>qml/HeliumReborn/LogbookViewComponents/TabButton.qml</file>
     </qresource>
 </RCC>
