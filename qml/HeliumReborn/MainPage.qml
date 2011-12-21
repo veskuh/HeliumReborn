@@ -5,6 +5,17 @@ import "common"
 Page {
     tools: commonTools
 
+    function back() {
+        webView.back.trigger();
+    }
+
+    function forward() {
+        webView.forward.trigger();
+    }
+
+
+
+
     // Header
     Header {
        id: header

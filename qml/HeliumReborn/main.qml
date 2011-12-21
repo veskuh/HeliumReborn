@@ -25,20 +25,24 @@ PageStackWindow {
 
         ToolIcon {
             iconSource: "qrc:/qmls/pics/back-30x30.png"
-
+            onClicked: { mainPage.back(); }
         }
 
         ToolIcon {
             iconSource: "qrc:/qmls/pics/home-30x30.png"
+            onClicked: { if (appcore) appcore.loadHomeUrl(); }
+
         }
 
         ToolIcon {
             iconSource: "qrc:/qmls/pics/forward-30x30.png"
+            onClicked: { mainPage.forward(); }
+
         }
 
         ToolIcon {
             iconSource: "qrc:/qmls/pics/new-bookmark-30x30.png"
-            onClicked: {bookmarkAdded.show()}
+            onClicked: { bookmarkAdded.show(); if (appcore) appcore.bookmarkCurrentUrl(); }
         }
 
         ToolIcon {
