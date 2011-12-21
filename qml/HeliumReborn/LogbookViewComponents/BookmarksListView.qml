@@ -87,7 +87,7 @@ LogbookListView {
             anchors.verticalCenter: parent.verticalCenter
             Text {
                id: delegateTitle
-               font.pointSize: 16
+               font.pixelSize: 16
                font.bold: true
                color: "#000000"
                text: model.title
@@ -97,7 +97,7 @@ LogbookListView {
             Text {
                id: delegateUrl
                text: model.url
-               font.pointSize: 14
+               font.pixelSize: 14
                color: "#555555"
                elide: Text.ElideRight
                width: parent.width
@@ -114,7 +114,7 @@ LogbookListView {
          MouseArea {
             anchors.fill: parent
             onPressed: { delegateUiHover.opacity = 0.4; }
-            onReleased: { if ( appcore ) { appcore.currentUrl = model.url; } delegateUiHover.opacity = 0; }
+            onReleased: { if ( appcore ) { appcore.currentUrl = model.url; logbookSheet.close();} delegateUiHover.opacity = 0; }
             onExited: { delegateUiHover.opacity = 0; }
          }
       }
@@ -126,7 +126,7 @@ LogbookListView {
       width: (parent) ? parent.width : 480
       height: 30
       Text {
-         text: section; font.pointSize: 14; font.bold: true; color: "#fff"; style: Text.Sunken; styleColor: "#000";
+         text: section; font.pixelSize: 14; font.bold: true; color: "#fff"; style: Text.Sunken; styleColor: "#000";
          anchors.left: parent.left; anchors.leftMargin: 4; height: parent.height; verticalAlignment: 'AlignVCenter'
       }
    }

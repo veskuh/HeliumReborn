@@ -43,7 +43,7 @@ BorderImage {
       style: Text.Sunken
 
       font.family: "Helvetica"
-      font.pointSize: 22
+      font.pixelSize: 22
       font.bold: true
 
       anchors.centerIn: parent

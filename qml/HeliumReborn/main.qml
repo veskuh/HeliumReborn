@@ -14,6 +14,17 @@ PageStackWindow {
     }
 
 
+    Sheet {
+        id: logbookSheet
+
+        acceptButtonText: "Done"
+
+        content: LogbookView {
+
+        }
+    }
+
+
 
     MainPage {
         id: mainPage
@@ -47,7 +58,7 @@ PageStackWindow {
 
         ToolIcon {
             iconSource: "qrc:/qmls/pics/bookmarks-30x30.png"
-            onClicked: { if (appcore) appcore.showLogbookView(); }
+            onClicked: { logbookSheet.open(); }
 
         }
 

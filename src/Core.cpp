@@ -21,7 +21,7 @@
 #define ENGINE_BASEURL                    "/home/meego/qml/"
 #define BROWSERVIEW_QML                   "MainPage.qml"
 #define BROWSERVIEW_QML_WEBVIEW_OBJ_NAME  "webView"
-#define LOGBOOKVIEW_QML                   "LogbookView.qml"
+#define LOGBOOKVIEW_QML                   "/Users/vesahart/Projects/HeliumReborn/qml/HeliumReborn/LogbookView.qml"
 
 // public:
 Core::Core(QDeclarativeView *mainView, QObject *parent) :

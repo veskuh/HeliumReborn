@@ -35,53 +35,18 @@ Item {
 
    width: parent ? parent.width : 480
    height: parent ? parent.height : 800
-   state: "hidden"
-
-   Connections {
-      target: appcore
-      onShowingBrowserView: { logbookView.state = "hidden"; }
-      onShowingLogbookView: { logbookView.state = "visible"; }
-   }
-
-   states: [
-      State { name: "hidden"; PropertyChanges { target: logbookView; y: logbookView.height+10; } },
-      State { name: "visible"; PropertyChanges { target: logbookView; y: 0; } }
-   ]
-
-   transitions: [
-       Transition {
-           from: "hidden"; to: "visible";
-           PropertyAnimation { property: "y"; easing.type: "Linear"; duration: 300; }
-       },
-       Transition {
-           from: "visible"; to: "hidden";
-           SequentialAnimation {
-               PropertyAnimation { property: "y"; easing.type: "Linear"; duration: 300; }
-               ScriptAction{ script:  { if(appcore) appcore.deflateLogbookViewLater(); }
-               }
-           }
-       }
-   ]
-
-   Header {
-      id: header
-      anchors.top: parent.top
-      anchors.left: parent.left
-      anchors.right: parent.right
-      z: 2
-   }
 
    // Tabs-Container
    Row {
       id: tabsContainer
-      anchors.top: header.bottom
+     // anchors.top: parent.bottom
       anchors.bottom: tabs.top
       z: 0
 
       BookmarksListView {
          id: bookmarks
          width: logbookView.width
-         height: logbookView.height - tabs.height - header.height
+         height: logbookView.height - tabs.height
          model: bookmarksModel
          z: 1
       }
@@ -89,7 +54,7 @@ Item {
       MostVisitedListView {
          id: mostVisited
          width: logbookView.width
-         height: logbookView.height - tabs.height - header.height
+         height: logbookView.height - tabs.height
          model: mostVisitedModel
          z: 1
       }
@@ -97,7 +62,7 @@ Item {
       HistoryListView {
          id: history
          width: logbookView.width
-         height: logbookView.height - tabs.height - header.height
+         height: logbookView.height - tabs.height
          model: historyModel
          z: 1
       }

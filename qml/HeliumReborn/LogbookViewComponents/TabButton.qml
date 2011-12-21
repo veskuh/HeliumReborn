@@ -55,7 +55,7 @@ Rectangle {
       style: Text.Sunken
 
       font.family: "Helvetica"
-      font.pointSize: 12
+      font.pixelSize: 12
       font.bold: true
 
       anchors.horizontalCenter: parent.horizontalCenter
