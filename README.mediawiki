@@ -1,0 +1,8 @@
+= HeliumReborn =
+HeliumReborn is a fork of Helium Mobile browser https://github.com/OrangeLabsUK/Helium-Mobile-Browser for Harmattan
+and Nemo Mobile. Main change to the original is utilization of Nokia's Qt Quick Components for MeeGo to enable good 
+platform integration. Code structure is also a bit different since the port started from empty project and added 
+Helium code as needed, leaving some out.
+
+Target is to merge feautres developed here to proper Helium upstream thus making this repo obsolete.
+
