@@ -105,7 +105,7 @@ Item {
    }
 
    // TextInput box in which the User types the URL
-   TextInput {
+   TextField {
       id: textEdit
 
       Binding {
@@ -119,20 +119,12 @@ Item {
       anchors.right: reloadIcon.left
       anchors.rightMargin: 4
       anchors.verticalCenter: parent.verticalCenter
-      color: "#444444"
       font.family: "Helvetica"
       font.bold: false
-      //font.pointSize: 18
       font.pixelSize: 18
-      readOnly: true
       onAccepted: { finishEdit(); }
       Keys.onEscapePressed: { abortEdit(); }
 
-      MouseArea {
-         id: editRegion
-         anchors.fill: parent
-         onClicked: { edit(); }
-      }
    }
 
    Image {

@@ -126,35 +126,12 @@ Item {
          anchors.topMargin: 4
          anchors.bottom: parent.bottom
 
-         Rectangle {
-            anchors.fill: urlBox
-            color: "white"
-            z: 0
-            radius: urlBox.radius
-         }
 
-         BorderImage {
-            source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
-            anchors.left: urlBox.left
-            anchors.leftMargin: 2
-            anchors.top: urlBox.top
-            anchors.topMargin: 1
-            anchors.bottom: urlBox.bottom
-            anchors.bottomMargin: 1
-            width: (urlBox.width-3) * webView.progress
-            opacity: 1-headerSkeleton.progressOff
-            clip: true
-            z: 1
-         }
 
-         // Adds a sense of "dept" to the urlBox
-         BottomDropShadow {
-            z: 2;
-            width: urlBox.width-6; height: 10;
-            anchors.left: urlBox.left; anchors.leftMargin: 3; anchors.top: urlBox.top;
-         }
 
-         Rectangle {
+
+
+         Item {
             id: urlBox
             height: header.height/2
             anchors.left: parent.left
@@ -163,10 +140,7 @@ Item {
             anchors.rightMargin: 10
             clip: true
             property bool mouseGrabbed: false
-            color: "transparent"
-            border.color: "#555"
-            border.width: 4
-            radius: 10
+
             z: 3
 
             FieldText {
@@ -184,6 +158,21 @@ Item {
                anchors.verticalCenter: urlBox.verticalCenter
                anchors.verticalCenterOffset: 1
             }
+
+            BorderImage {
+               source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
+               anchors.left: fieldText.left
+               anchors.leftMargin: 36
+               anchors.top: fieldText.top
+               anchors.topMargin: 1
+               anchors.bottom: fieldText.bottom
+               anchors.bottomMargin: 1
+               width: (fieldText.width-64) * webView.progress
+               opacity: 0.8-headerSkeleton.progressOff
+               clip: true
+               z: 4
+            }
+
          }
       }
 
