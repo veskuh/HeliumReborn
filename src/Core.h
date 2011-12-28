@@ -34,6 +34,8 @@
 #include <QDeclarativeComponent>
 #include <QGraphicsObject>
 #include <QSettings>
+#include <QNetworkReply>
+#include <QSslError>
 
 #include "buildconfig.h"
 #include "MainView.h"
@@ -80,6 +82,7 @@ public slots:
    void hideVkb();
 
 private slots:
+   void onSslErrors(QNetworkReply*,QList<QSslError>);
    void onEngineQuit();
    void onShowBrowserView();
    void onShowLogbookView();

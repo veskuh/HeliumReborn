@@ -12,7 +12,7 @@
 #include <QList>
 #include <QDesktopWidget>
 #include <QInputContext>
-
+#include <QNetworkAccessManager>
 #include "macros.h"
 #include "Settings.h"
 #include "FaviconImageProvider.h"
@@ -35,6 +35,9 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
       m_logbookView(NULL),
       m_logbook(new Logbook())
 {
+
+   QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+   connect(manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this,SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)) );
 
    // Let's start tracking orientation
 
@@ -358,4 +361,12 @@ void Core::hideVkb() {
    QEvent request(QEvent::CloseSoftwareInputPanel);
    inputContext->filterEvent(&request);
    inputContext->reset();
+}
+
+
+
+void Core::onSslErrors(QNetworkReply * reply, QList<QSslError> errors) {
+    qDebug()<<"wtf";
+    reply->ignoreSslErrors();
+
 }
