@@ -82,6 +82,35 @@ HEADERS += \
 INCLUDEPATH+=src \
              src/utility
 
+OTHER_FILES += \
+    qml/HeliumReborn/MainPage.qml \
+    qml/HeliumReborn/main.qml \
+    qml/HeliumReborn/LogbookView.qml \
+    qml/HeliumReborn/Header.qml \
+    qml/HeliumReborn/FlickableWebView.qml \
+    qml/HeliumReborn/FieldText.qml \
+    qml/HeliumReborn/common/VScrollDropShadow.qml \
+    qml/HeliumReborn/common/VHScrollDropShadow.qml \
+    qml/HeliumReborn/common/TopDropShadow.qml \
+    qml/HeliumReborn/common/ToolTip.qml \
+    qml/HeliumReborn/common/TemporaryMessageWithIcon.qml \
+    qml/HeliumReborn/common/ScrollBar.qml \
+    qml/HeliumReborn/common/HScrollDropShadow.qml \
+    qml/HeliumReborn/common/EmbossedButton.qml \
+    qml/HeliumReborn/common/BottomDropShadow.qml \
+    qml/HeliumReborn/common/BarIcon.qml \
+    qml/HeliumReborn/common/Background.qml \
+    qml/HeliumReborn/LogbookViewComponents/TabButton.qml \
+    qml/HeliumReborn/LogbookViewComponents/TabBar.qml \
+    qml/HeliumReborn/LogbookViewComponents/MostVisitedListView.qml \
+    qml/HeliumReborn/LogbookViewComponents/LogbookListView.qml \
+    qml/HeliumReborn/LogbookViewComponents/HistoryListView.qml \
+    qml/HeliumReborn/LogbookViewComponents/Header.qml \
+    qml/HeliumReborn/LogbookViewComponents/BookmarksListView.qml
+
+
+
+
 
 
 
