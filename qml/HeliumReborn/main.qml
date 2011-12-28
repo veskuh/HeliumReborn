@@ -36,7 +36,7 @@ PageStackWindow {
 
         buttons: ButtonRow {
             style: ButtonStyle { }
-            anchors.top: name.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
             Button {text: "Ok"; onClicked: warningDialog.accept()}
         }
 
