@@ -21,7 +21,7 @@
 #define ENGINE_BASEURL                    "qrc:/qmls/qml/HeliumReborn/"
 #define BROWSERVIEW_QML                   "MainPage.qml"
 #define BROWSERVIEW_QML_WEBVIEW_OBJ_NAME  "webView"
-#define LOGBOOKVIEW_QML                   "/Users/vesahart/Projects/HeliumReborn/qml/HeliumReborn/LogbookView.qml"
+#define LOGBOOKVIEW_QML                   "LogbookView.qml"
 
 // public:
 Core::Core(QDeclarativeView *mainView, QObject *parent) :
@@ -36,7 +36,8 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
       m_logbook(new Logbook())
 {
 
-   QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+   QNetworkAccessManager *manager = mainView->engine()->networkAccessManager();
    connect(manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this,SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)) );
 
    // Let's start tracking orientation
@@ -366,7 +367,8 @@ void Core::hideVkb() {
 
 
 void Core::onSslErrors(QNetworkReply * reply, QList<QSslError> errors) {
-    qDebug()<<"wtf";
+    // We ignore the error, but we notify user with an error dialog
+    emit sslError(errors.first().errorString());
     reply->ignoreSslErrors();
 
 }

@@ -105,6 +105,7 @@ signals:
    void currentUrlChanged();
    void showingBrowserView();
    void showingLogbookView();
+   void sslError(const QString &errorMsg);
 
    // Private Signals
    void m_showLogbookView();

@@ -63,8 +63,8 @@ Item {
       fieldText.state = '';
       fieldText.text = textEdit.text;
       mouseGrabbed = false;
+      textEdit.selectAll();
       fieldText.editFinished();
-      textEdit.closeSoftwareInputPanel();
    }
 
    // Set the "fieldText" to "<empty>" state, and emit the "editAborted" signal
@@ -73,7 +73,7 @@ Item {
          mouseGrabbed = false;
          textEdit.text = fieldText.text;
          fieldText.state = '';
-         textEdit.select(textEdit.text.length, textEdit.text.length);
+         textEdit.selectAll();
       }
       fieldText.editAborted();
    }
@@ -123,6 +123,7 @@ Item {
       font.bold: false
       font.pixelSize: 18
       onAccepted: { finishEdit(); }
+
       Keys.onEscapePressed: { abortEdit(); }
 
    }

@@ -7,11 +7,53 @@ PageStackWindow {
 
     initialPage: mainPage
 
+    Dialog {
+        id: warningDialog
+
+        title: Rectangle {
+            id: titleField
+            height: 2
+            width: parent.width
+            color: "red"
+        }
+
+        content:Item {
+            id: name
+            width: parent.width
+            height: 280
+            Text {
+                id: text
+                width: parent.width
+                height: parent.height
+                font.pixelSize: 22
+                anchors.centerIn: parent
+                color: "white"
+                text: "<b>SSL error</b>\n\nSite cannot be securely authenticated. \n\nReason:\n\n "
+                wrapMode:Text.WordWrap
+
+            }
+        }
+
+        buttons: ButtonRow {
+            style: ButtonStyle { }
+            anchors.top: name.bottom
+            Button {text: "Ok"; onClicked: warningDialog.accept()}
+        }
+
+        Connections {
+           target: appcore
+           onSslError: { text.text="<b>SSL error</b><p>Site cannot be securely authenticated. <p>Error Message:<br>"+errorMsg; warningDialog.open(); }
+        }
+
+    }
+
+
     InfoBanner {
         id: bookmarkAdded
         text: "Bookmark added"
         iconSource:"qrc:/qmls/pics/bookmark-icon-30x30.png"
     }
+
 
 
     Sheet {
@@ -62,12 +104,6 @@ PageStackWindow {
 
         }
 
-
-      /*  ToolIcon {
-            platformIconId: "toolbar-view-menu"
-            anchors.right: (parent === undefined) ? undefined : parent.right
-            onClicked: (myMenu.status == DialogStatus.Closed) ? myMenu.open() : myMenu.close()
-        }*/
     }
 
     Menu {
