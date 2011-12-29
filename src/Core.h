@@ -81,6 +81,11 @@ public slots:
    void deflateLogbookViewLater();
    void hideVkb();
 
+   void clearHistory();
+   void clearBookmarks();
+   void clearCookies();
+   void resetAll();
+
 private slots:
    void onSslErrors(QNetworkReply*,QList<QSslError>);
    void onEngineQuit();

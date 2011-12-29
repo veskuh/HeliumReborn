@@ -13,10 +13,11 @@
 #include <QDesktopWidget>
 #include <QInputContext>
 #include <QNetworkAccessManager>
+#include "QNetworkCookieJar"
+
 #include "macros.h"
 #include "Settings.h"
 #include "FaviconImageProvider.h"
-
 
 #define ENGINE_BASEURL                    "qrc:/qmls/qml/HeliumReborn/"
 #define BROWSERVIEW_QML                   "MainPage.qml"
@@ -39,6 +40,7 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
 
    QNetworkAccessManager *manager = mainView->engine()->networkAccessManager();
    connect(manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this,SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)) );
+   manager->setCookieJar(new QNetworkCookieJar(this));
 
    // Let's start tracking orientation
 
@@ -363,6 +365,26 @@ void Core::hideVkb() {
    inputContext->filterEvent(&request);
    inputContext->reset();
 }
+
+void Core::clearBookmarks() {
+    // TODO
+}
+
+void Core::clearHistory() {
+    // TODO
+}
+
+void Core::clearCookies() {
+    // In anycase the cookies are not persisted
+    manager->setCookieJar(new QNetworkCookieJar(this));
+}
+
+void Core::resetAll() {
+    clearBookmarks();
+    clearHistory();
+    clearCookies();
+}
+
 
 
 

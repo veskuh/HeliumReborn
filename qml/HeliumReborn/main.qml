@@ -123,10 +123,22 @@ PageStackWindow {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
-            MenuItem { text: qsTr("Clear history") }
-            MenuItem { text: qsTr("Clear cookies") }
-            MenuItem { text: qsTr("Clear bookmarks") }
-            MenuItem { text: qsTr("Reset All") }
+            MenuItem {
+                text: qsTr("Clear history")
+                onClicked: { if (appcore) appcore.clearHistory(); }
+            }
+            MenuItem {
+                text: qsTr("Clear cookies")
+                onClicked: { if (appcore) appcore.clearCookies(); }
+            }
+            MenuItem {
+                text: qsTr("Clear bookmarks")
+                onClicked: { if (appcore) appcore.clearBookmarks(); }
+            }
+            MenuItem {
+                text: qsTr("Reset All")
+                onClicked: { if (appcore) appcore.resetAll(); }
+            }
 
         }
     }
