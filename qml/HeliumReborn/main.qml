@@ -77,39 +77,37 @@ PageStackWindow {
         visible: true
 
         ToolIcon {
-            iconId: "toolbar-previous"
+            // iconId: "toolbar-previous"
+            iconSource: "qrc:/qmls/pics/back-30x30.png"
             onClicked: { mainPage.back(); }
         }
 
         ToolIcon {
-            iconId: "toolbar-home"
-
-//            iconSource: "qrc:/qmls/pics/home-30x30.png"
+            // iconId: "toolbar-home"
+            iconSource: "qrc:/qmls/pics/home-30x30.png"
             onClicked: { if (appcore) appcore.loadHomeUrl(); }
 
         }
 
         ToolIcon {
-            iconId: "toolbar-next"
-
-   //         iconSource: "qrc:/qmls/pics/forward-30x30.png"
+            // iconId: "toolbar-next"
+            iconSource: "qrc:/qmls/pics/forward-30x30.png"
             onClicked: { mainPage.forward(); }
 
         }
 
         ToolIcon {
-            iconId: "toolbar-favorite-mark"
-//            iconSource: "qrc:/qmls/pics/new-bookmark-30x30.png"
+            // iconId: "toolbar-favorite-mark"
+            iconSource: "qrc:/qmls/pics/new-bookmark-30x30.png"
             onClicked: { bookmarkAdded.show(); if (appcore) appcore.bookmarkCurrentUrl(); }
         }
 
         ToolIcon {
-            iconId: "toolbar-directory"
-     //       iconSource: "qrc:/qmls/pics/bookmarks-30x30.png"
+            // iconId: "toolbar-directory"
+            iconSource: "qrc:/qmls/pics/bookmarks-30x30.png"
             onClicked: { logbookSheet.open(); }
 
         }
-
 
         ToolIcon {
              platformIconId: "toolbar-view-menu";
