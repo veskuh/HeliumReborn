@@ -367,16 +367,18 @@ void Core::hideVkb() {
 }
 
 void Core::clearBookmarks() {
-    // TODO
+    if( m_logbook )
+        m_logbook->deleteBookmarks();
 }
 
 void Core::clearHistory() {
-    // TODO
+    if( m_logbook )
+        m_logbook->deleteHistories();
 }
 
 void Core::clearCookies() {
-    // In anycase the cookies are not persisted
-    manager->setCookieJar(new QNetworkCookieJar(this));
+    if( m_mainView )
+        m_mainView->engine()->networkAccessManager()->setCookieJar(new QNetworkCookieJar(this));
 }
 
 void Core::resetAll() {
