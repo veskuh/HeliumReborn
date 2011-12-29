@@ -162,12 +162,12 @@ Item {
             BorderImage {
                source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
                anchors.left: fieldText.left
-               anchors.leftMargin: 36
+               anchors.leftMargin: 16
                anchors.top: fieldText.top
-               anchors.topMargin: 1
+               anchors.topMargin: 0
                anchors.bottom: fieldText.bottom
-               anchors.bottomMargin: 1
-               width: (fieldText.width-64) * webView.progress
+               anchors.bottomMargin: 0
+               width: (fieldText.width-32) * webView.progress
                opacity: 0.8-headerSkeleton.progressOff
                clip: true
                z: 4

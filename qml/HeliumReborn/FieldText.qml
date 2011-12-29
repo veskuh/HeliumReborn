@@ -78,31 +78,7 @@ Item {
       fieldText.editAborted();
    }
 
-   Image {
-      id: favIcon
-      height: parent.height-8
-      width: height
-      smooth: true; asynchronous: true;
-      fillMode: Image.PreserveAspectFit
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.left: parent.left
-      anchors.leftMargin: 4
-      opacity: 0;
-      source: "image://favicons/"+webView.url
-   }
 
-   Image {
-      id: defaultFavIcon
-      height: parent.height-8
-      width: height
-      smooth: true
-      fillMode: Image.PreserveAspectFit
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.left: parent.left
-      anchors.leftMargin: 4
-      source: "qrc:/qmls/pics/default-favico-30x30.png"
-      opacity: 1
-   }
 
    // TextInput box in which the User types the URL
    TextField {
@@ -114,73 +90,115 @@ Item {
          value: fieldText.text
       }
 
-      anchors.left: defaultFavIcon.right
+      Image {
+         id: favIcon
+         height: parent.height-16
+         width: height
+         smooth: true; asynchronous: true;
+         fillMode: Image.PreserveAspectFit
+         anchors.verticalCenter: parent.verticalCenter
+         anchors.left: parent.left
+         anchors.leftMargin: 16
+         opacity: 0;
+         source: "image://favicons/"+webView.url
+      }
+
+      Image {
+         id: defaultFavIcon
+         height: parent.height-16
+         width: height
+         smooth: true
+         fillMode: Image.PreserveAspectFit
+         anchors.verticalCenter: parent.verticalCenter
+         anchors.left: parent.left
+         anchors.leftMargin: 16
+         source: "qrc:/qmls/pics/default-favico-30x30.png"
+         opacity: 1
+      }
+
+      Image {
+         id: reloadIcon
+         height: parent.height-16
+         width: height
+         smooth: true
+         anchors.verticalCenter: parent.verticalCenter
+         anchors.right: parent.right
+         anchors.rightMargin: 16
+         source: "qrc:/qmls/pics/reload-30x30.png"
+         opacity: 0.7
+         MouseArea {
+            anchors.fill: parent
+            onClicked: { fieldText.reloadRequested(); }
+            onPressed: { parent.opacity = 1; }
+            onReleased: { parent.opacity = 0.7; }
+         }
+      }
+
+      Image {
+         id: clearIcon
+         height: parent.height-16
+         width: height
+         smooth: true
+         anchors.verticalCenter: parent.verticalCenter
+         anchors.right: parent.right
+         anchors.rightMargin: 16
+         source: "qrc:/qmls/pics/clear-30x30.png"
+         opacity: 0
+         MouseArea {
+            anchors.fill: parent
+            onClicked: { textEdit.text = ''; }
+            onPressed: { parent.opacity = 1; }
+            onReleased: { parent.opacity = 0.7; }
+         }
+      }
+      Image {
+         id: stopIcon
+         height: parent.height-16
+         width: height
+         smooth: true
+         anchors.verticalCenter: parent.verticalCenter
+         anchors.right: parent.right
+         anchors.rightMargin: 16
+         source: "qrc:/qmls/pics/stop-30x30.png"
+         opacity: 0
+         MouseArea {
+            anchors.fill: parent
+            onClicked: { fieldText.stopRequested(); }
+            onPressed: { parent.opacity = 1; }
+            onReleased: { parent.opacity = 0.7; }
+         }
+      }
+
+
+      platformStyle: TextFieldStyle { paddingRight: defaultFavIcon.width + 32 ; paddingLeft:reloadIcon.width + 32  }
+      anchors.left: parent.left
       anchors.leftMargin: 4
-      anchors.right: reloadIcon.left
+      anchors.right: parent.right
       anchors.rightMargin: 4
       anchors.verticalCenter: parent.verticalCenter
       font.family: "Helvetica"
       font.bold: false
       font.pixelSize: 18
-      onAccepted: { finishEdit(); }
-
       Keys.onEscapePressed: { abortEdit(); }
+      Keys.onEnterPressed: { finishEdit(); }
+      Keys.onReturnPressed: { finishEdit(); }
 
-   }
+      placeholderText: "Enter URL"
 
-   Image {
-      id: reloadIcon
-      height: parent.height-4
-      width: height
-      smooth: true
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.right: parent.right
-      anchors.rightMargin: 4
-      source: "qrc:/qmls/pics/reload-30x30.png"
-      opacity: 0.7
-      MouseArea {
-         anchors.fill: parent
-         onClicked: { fieldText.reloadRequested(); }
-         onPressed: { parent.opacity = 1; }
-         onReleased: { parent.opacity = 0.7; }
+      onActiveFocusChanged: {
+          if( textEdit.focus ) {
+              edit();
+          }
+
       }
+
+
+
    }
 
-   Image {
-      id: clearIcon
-      height: parent.height-4
-      width: height
-      smooth: true
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.right: parent.right
-      anchors.rightMargin: 4
-      source: "qrc:/qmls/pics/clear-30x30.png"
-      opacity: 0
-      MouseArea {
-         anchors.fill: parent
-         onClicked: { textEdit.text = ''; }
-         onPressed: { parent.opacity = 1; }
-         onReleased: { parent.opacity = 0.7; }
-      }
-   }
 
-   Image {
-      id: stopIcon
-      height: parent.height-4
-      width: height
-      smooth: true
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.right: parent.right
-      anchors.rightMargin: 4
-      source: "qrc:/qmls/pics/stop-30x30.png"
-      opacity: 0
-      MouseArea {
-         anchors.fill: parent
-         onClicked: { fieldText.stopRequested(); }
-         onPressed: { parent.opacity = 1; }
-         onReleased: { parent.opacity = 0.7; }
-      }
-   }
+
+
 
    states: [
    State {
@@ -199,13 +217,8 @@ Item {
       }
       PropertyChanges {
          target: textEdit
-         color: "black"
          readOnly: false
          focus: true
-      }
-      PropertyChanges {
-         target: editRegion
-         opacity: 0
       }
       StateChangeScript {
          name: "selectAll"
