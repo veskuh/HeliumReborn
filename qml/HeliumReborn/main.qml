@@ -77,41 +77,57 @@ PageStackWindow {
         visible: true
 
         ToolIcon {
-            iconSource: "qrc:/qmls/pics/back-30x30.png"
+            iconId: "toolbar-previous"
             onClicked: { mainPage.back(); }
         }
 
         ToolIcon {
-            iconSource: "qrc:/qmls/pics/home-30x30.png"
+            iconId: "toolbar-home"
+
+//            iconSource: "qrc:/qmls/pics/home-30x30.png"
             onClicked: { if (appcore) appcore.loadHomeUrl(); }
 
         }
 
         ToolIcon {
-            iconSource: "qrc:/qmls/pics/forward-30x30.png"
+            iconId: "toolbar-next"
+
+   //         iconSource: "qrc:/qmls/pics/forward-30x30.png"
             onClicked: { mainPage.forward(); }
 
         }
 
         ToolIcon {
-            iconSource: "qrc:/qmls/pics/new-bookmark-30x30.png"
+            iconId: "toolbar-favorite-mark"
+//            iconSource: "qrc:/qmls/pics/new-bookmark-30x30.png"
             onClicked: { bookmarkAdded.show(); if (appcore) appcore.bookmarkCurrentUrl(); }
         }
 
         ToolIcon {
-            iconSource: "qrc:/qmls/pics/bookmarks-30x30.png"
+            iconId: "toolbar-directory"
+     //       iconSource: "qrc:/qmls/pics/bookmarks-30x30.png"
             onClicked: { logbookSheet.open(); }
 
         }
 
+
+        ToolIcon {
+             platformIconId: "toolbar-view-menu";
+             id: menuIcon
+             anchors.right: parent===undefined ? undefined : parent.right
+             onClicked: (myMenu.status == DialogStatus.Closed) ? myMenu.open() : myMenu.close()
+        }
     }
 
     Menu {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
-            MenuItem { text: qsTr("Settings") }
+            MenuItem { text: qsTr("Clear history") }
             MenuItem { text: qsTr("Clear cookies") }
+            MenuItem { text: qsTr("Clear bookmarks") }
+            MenuItem { text: qsTr("Reset All") }
+
         }
     }
 }
