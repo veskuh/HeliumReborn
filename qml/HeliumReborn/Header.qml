@@ -133,7 +133,7 @@ Item {
 
          Item {
             id: urlBox
-            height: header.height/2
+            height: fieldText.height+16
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.right: parent.right
@@ -158,20 +158,25 @@ Item {
                anchors.verticalCenter: urlBox.verticalCenter
                anchors.verticalCenterOffset: 1
             }
+         }
 
-            BorderImage {
-               source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
-               anchors.left: fieldText.left
-               anchors.leftMargin: 16
-               anchors.top: fieldText.top
-               anchors.topMargin: 0
-               anchors.bottom: fieldText.bottom
-               anchors.bottomMargin: 0
-               width: (fieldText.width-32) * webView.progress
-               opacity: 0.8-headerSkeleton.progressOff
-               clip: true
-               z: 4
-            }
+         BorderImage {
+            source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
+            anchors.left: parent.left
+            anchors.top: urlBox.top
+            anchors.leftMargin: 24
+            anchors.topMargin: 0
+            height:parent.height-16
+
+            anchors.bottomMargin: 16
+            width: (fieldText.width-16) * webView.progress
+
+            verticalTileMode: BorderImage.Stretch
+            horizontalTileMode: BorderImage.Stretch
+
+            opacity: 0.8-headerSkeleton.progressOff
+            clip: true
+            z:4
 
          }
       }
