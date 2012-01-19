@@ -4,5 +4,6 @@ and Nemo Mobile. Main change to the original is utilization of Nokia's Qt Quick 
 platform integration. Code structure is also a bit different since the port started from empty project and added 
 Helium code as needed, leaving some out.
 
-Target is to merge feautres developed here to proper Helium upstream thus making this repo obsolete.
+Target is to merge feautres developed here to proper Helium upstream thus this repo will be mostly used just to expermient
+more radical changes.
 
