@@ -170,7 +170,8 @@ Item {
             anchors.top: urlBox.top
             anchors.leftMargin: 22
             anchors.topMargin: 0
-            height:parent.height-18
+            anchors.bottom: urlBox.bottom
+            anchors.bottomMargin: 0
 
             width: (fieldText.width-24) * webView.progress
 
