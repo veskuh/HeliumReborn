@@ -62,5 +62,6 @@
         <file>qml/HeliumReborn/LogbookViewComponents/MostVisitedListView.qml</file>
         <file>qml/HeliumReborn/LogbookViewComponents/TabBar.qml</file>
         <file>qml/HeliumReborn/LogbookViewComponents/TabButton.qml</file>
+        <file>pics/progressbar.png</file>
     </qresource>
 </RCC>

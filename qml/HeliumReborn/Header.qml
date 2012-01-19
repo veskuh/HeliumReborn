@@ -161,15 +161,18 @@ Item {
          }
 
          BorderImage {
-            source: "qrc:/qmls/pics/addressbar-filling-16x31.sci"
+            source: "qrc:/qmls/pics/progressbar.png"
+            border.bottom: 17
+            border.top: 17
+            border.left: 13
+            border.right: 0
             anchors.left: parent.left
             anchors.top: urlBox.top
-            anchors.leftMargin: 24
+            anchors.leftMargin: 22
             anchors.topMargin: 0
-            height:parent.height-16
+            height:parent.height-18
 
-            anchors.bottomMargin: 16
-            width: (fieldText.width-16) * webView.progress
+            width: (fieldText.width-24) * webView.progress
 
             verticalTileMode: BorderImage.Stretch
             horizontalTileMode: BorderImage.Stretch
