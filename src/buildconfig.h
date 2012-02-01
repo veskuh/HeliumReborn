@@ -64,7 +64,7 @@
 
 /** ------------------------------------- App general constants */
 #define APP_NAME                 "HeliumMobileBrowser"
-#define APP_VERSION              "1.0.0"
+#define APP_VERSION              "1.1.0"
 #define ORG_NAME                 "OrangeLabsUK"
 #define ORG_DOMAIN               "orange.com"
 

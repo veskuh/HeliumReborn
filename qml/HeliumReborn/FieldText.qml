@@ -78,7 +78,12 @@ Item {
       fieldText.editAborted();
    }
 
-
+   SipAttributes {
+               id:customSipAttributes
+               actionKeyEnabled: true
+               actionKeyHighlighted: true
+               actionKeyLabel: "Go"
+           }
 
    // TextInput box in which the User types the URL
    TextField {
@@ -169,8 +174,8 @@ Item {
          }
       }
 
-
-      platformStyle: TextFieldStyle { paddingRight: defaultFavIcon.width + 32 ; paddingLeft:reloadIcon.width + 32  }
+      platformSipAttributes:customSipAttributes
+      platformStyle: TextFieldStyle { paddingRight: defaultFavIcon.width + 32 ; paddingLeft:reloadIcon.width + 32; }
       anchors.left: parent.left
       anchors.leftMargin: 4
       anchors.right: parent.right
