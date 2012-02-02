@@ -190,25 +190,4 @@ Flickable {
          }
       }
    }
-
-//   Rectangle {
-//      id: focusAwayRect
-//      color: "#000"
-//      anchors.top: parent.top
-//      anchors.bottom: parent.bottom
-//      anchors.left: parent.left
-//      anchors.right: parent.right
-//      opacity: 0
-//      z: 2
-
-//      states: State {
-//         name: "focusAway"; when: !focus;
-//         PropertyChanges { target: focusAwayRect; opacity: 0.8; }
-//      }
-
-//      transitions: Transition {
-//         from: ""; to: "focusAway"; reversible: true;
-//         NumberAnimation { property: "opacity"; duration: 100; }
-//      }
-//   }
 }

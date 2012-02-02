@@ -89,9 +89,6 @@ Item {
             target: busyLoadingIcon; property: "rotation";
             from: 360; to: 0; loops: Animation.Infinite; easing.type: "Linear"; duration: 5000;
          }
-
-
-
       }
 
       // Header Text: Holds the Page Title
@@ -125,11 +122,6 @@ Item {
          anchors.top: headerText.bottom
          anchors.topMargin: 4
          anchors.bottom: parent.bottom
-
-
-
-
-
 
          Item {
             id: urlBox
@@ -187,21 +179,21 @@ Item {
 
       property real progressOff : 1
       states: [
-      State {
-         name: "ProgressShown"
-         when: webView.progress < 1.0
-         PropertyChanges { target: headerSkeleton; progressOff: 0; }
-      }
+          State {
+              name: "ProgressShown"
+              when: webView.progress < 1.0
+              PropertyChanges { target: headerSkeleton; progressOff: 0; }
+          }
       ]
       transitions: [
-      Transition {
-         PropertyAnimation {
-            target: headerSkeleton
-            property: "progressOff"
-            easing.type: "InOutQuad"
-            duration: 300
-         }
-      }
+          Transition {
+              PropertyAnimation {
+                  target: headerSkeleton
+                  property: "progressOff"
+                  easing.type: "InOutQuad"
+                  duration: 300
+              }
+          }
       ]
    }
 }
