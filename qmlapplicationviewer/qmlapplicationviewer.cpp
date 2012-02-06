@@ -103,6 +103,11 @@ QmlApplicationViewer::QmlApplicationViewer(QDeclarativeView *view, QWidget *pare
 {
     connect(view->engine(), SIGNAL(quit()), view, SLOT(close()));
     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    view->setAttribute(Qt::WA_OpaquePaintEvent);
+    view->setAttribute(Qt::WA_NoSystemBackground);
+    view->viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
+    view->viewport()->setAttribute(Qt::WA_NoSystemBackground);
+
     // Qt versions prior to 4.8.0 don't have QML/JS debugging services built in
 #if defined(QMLJSDEBUGGER) && QT_VERSION < 0x040800
 #if !defined(NO_JSDEBUGGER)
