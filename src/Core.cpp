@@ -25,7 +25,7 @@
 #define LOGBOOKVIEW_QML                   "LogbookView.qml"
 
 // public:
-Core::Core(QDeclarativeView *mainView, QObject *parent) :
+Core::Core(QDeclarativeView *mainView, QString url, QObject *parent) :
       QObject(parent),
       m_mainView(mainView),
       m_WebViewInterface(NULL),
@@ -98,7 +98,11 @@ Core::Core(QDeclarativeView *mainView, QObject *parent) :
    m_mainView->engine()->addImageProvider("favicons", new FaviconImageProvider);
 
    // Load the Home URL
-   loadHomeUrl();
+   if( url=="" ) {
+       loadHomeUrl();
+   } else {
+       setCurrentUrl( fixUrl(url) );
+   }
 }
 
 Core::~Core() {

@@ -8,12 +8,22 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<QmlApplicationViewer> viewer(QmlApplicationViewer::create());
 
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    Core *core = new Core(viewer->getView());
+    Core *core;
+    if( app->arguments().length() > 1 ) {
+        core = new Core(viewer->getView(), app->arguments().last());
+    } else {
+        core = new Core(viewer->getView());
+    }
+
     viewer->getView()->setWindowTitle("HeliumReborn");
     viewer->setMainQmlFile("qrc:/qmls/qml/HeliumReborn/main.qml");
 
-    viewer->showExpanded();
     core->start();
+
+    viewer->showExpanded();
+
+
+
 
     return app->exec();
 }

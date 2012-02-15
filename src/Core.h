@@ -52,7 +52,7 @@ class Core : public QObject, public Declarativable
    Q_PROPERTY(QString currentUrl READ currentUrl WRITE setCurrentUrl NOTIFY currentUrlChanged)
 
 public:
-   Core(QDeclarativeView *mainView, QObject *parent = 0);
+   Core(QDeclarativeView *mainView, QString url="", QObject *parent = 0);
    virtual ~Core();
 
    /** (Gentlemen,) Start THIS Engine */
