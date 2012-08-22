@@ -21,6 +21,7 @@
 */
 
 import Qt 4.7
+import QtQuick 1.1
 import QtWebKit 1.0
 
 Flickable {
@@ -58,6 +59,7 @@ Flickable {
          webView.contentsScale = width / webView.width * webView.contentsScale;
    }
 
+
    pressDelay: 200
 //   interactive: webView.focus // If the "webView" has focus, then it's flickable
    onFocusChanged: { if ( focus ) webView.focus = true; } // Force focus on "webView" when received
@@ -65,6 +67,21 @@ Flickable {
    onMovementStarted: webView.renderingEnabled = false;
 
    onMovementEnded: webView.renderingEnabled = true;
+   PinchArea {
+       id: mapGestures
+       anchors.fill: parent
+
+       onPinchStarted: {
+           webView.renderingEnabled=false
+       }
+
+       onPinchUpdated: {
+           webView.doPinchZoom(pinch.scale/pinch.previousScale,pinch.center,pinch.previousCenter)
+       }
+
+       onPinchFinished: {
+           webView.renderingEnabled=true
+       }
 
    WebView {
       id: webView
@@ -88,6 +105,20 @@ Flickable {
             finalY.value = flickVY.to
             quickZoom.start()
          }
+      }
+      // Calculates new contentX and contentY for flickable and contentsScale for webview
+      function doPinchZoom(zoom,center,centerPrev)
+      {
+          var sc=zoom*contentsScale
+          if(sc>=0.5 && sc<=10 ){
+              //calculate contentX and contentY so webview moves along with the pinch
+              var vx=(center.x*zoom)-(center.x-flickable.contentX)+(centerPrev.x-center.x)
+              var vy=(center.y*zoom)-(center.y-flickable.contentY)+(centerPrev.y-center.y)
+              flickable.contentX=Math.max(0,Math.min(flickable.contentWidth*zoom-flickable.width,vx))
+              flickable.contentY=Math.max(0,Math.min(flickable.contentHeight*zoom-flickable.height,vy))
+              contentsScale=sc
+          }
+
       }
 
       //url:"http://www.connecting.nokia.com/"
@@ -189,5 +220,6 @@ Flickable {
             value: true
          }
       }
+   }
    }
 }
