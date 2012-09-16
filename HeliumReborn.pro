@@ -51,12 +51,6 @@ SOURCES += main.cpp \
     src/models/MostVisitedListModel.cpp \
     src/utility/SqliteDbHelper.cpp
 
-# Please do not modify the following two lines. Required for deployment.
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
-qtcAddDeployment()
-
-target.path=/usr/bin
-
 RESOURCES += \
     res.qrc
 
@@ -106,8 +100,16 @@ OTHER_FILES += \
     qml/HeliumReborn/LogbookViewComponents/LogbookListView.qml \
     qml/HeliumReborn/LogbookViewComponents/HistoryListView.qml \
     qml/HeliumReborn/LogbookViewComponents/Header.qml \
-    qml/HeliumReborn/LogbookViewComponents/BookmarksListView.qml
+    qml/HeliumReborn/LogbookViewComponents/BookmarksListView.qml \
+    heliumreborn80.png \
+    heliumreborn_harmattan.desktop
 
+
+# Please do not modify the following two lines. Required for deployment.
+include(qmlapplicationviewer/qmlapplicationviewer.pri)
+qtcAddDeployment()
+
+target.path=/usr/bin
 
 
 
